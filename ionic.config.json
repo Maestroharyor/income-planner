@@ -1,0 +1,7 @@
+{
+  "name": "Income Tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
