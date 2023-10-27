@@ -1,76 +1,127 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonIcon,
+  IonInput,
+  IonItem,
   IonLabel,
+  IonPage,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact
-} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+  IonTitle,
+  IonToolbar,
+  setupIonicReact,
+  useIonModal,
+} from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { GoGoal } from "react-icons/go";
+import { FiSettings } from "react-icons/fi";
+import { RiMoneyDollarCircleLine } from "react-icons/ri";
+import { BiHomeAlt2 } from "react-icons/bi";
 
 /* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
+import "@ionic/react/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
 
 /* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import './theme/variables.css';
+import "./theme/variables.css";
+
+import "./index.scss";
+import Home from "./pages/Home";
+import Expenses from "./pages/Expenses";
+import Goals from "./pages/Goals";
+import Settings from "./pages/Settings";
+import { BsPlus } from "react-icons/bs";
+import { useRef, useState } from "react";
+import { OverlayEventDetail } from "@ionic/react/dist/types/components/react-component-lib/interfaces";
+import AddNewIncomeOrExpense from "./pages/AddNewIncomeOrExpense";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/expenses">
+              <Expenses />
+            </Route>
+            <Route exact path="/add-new">
+              <AddNewIncomeOrExpense />
+            </Route>
+            <Route path="/goals">
+              <Goals />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <div className="text-[22px]">
+                <BiHomeAlt2 />
+              </div>
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+
+            <IonTabButton tab="expenses" href="/expenses">
+              <div className="text-[22px]">
+                <RiMoneyDollarCircleLine />
+              </div>
+              <IonLabel>Expenses</IonLabel>
+            </IonTabButton>
+
+            <IonTabButton tab="add" href="/add-new">
+              <div className="text-[22px] flex items-center justify-center w-[50px] h-[50px] bg-brand-primary text-white rounded-full">
+                <BsPlus />
+              </div>
+              {/* <IonLabel>Goals</IonLabel> */}
+            </IonTabButton>
+
+            <IonTabButton tab="goals" href="/goals">
+              <div className="text-[22px]">
+                <GoGoal />
+              </div>
+              <IonLabel>Plans</IonLabel>
+            </IonTabButton>
+
+            <IonTabButton tab="settings" href="/settings">
+              <div className="text-[22px]">
+                <FiSettings />
+              </div>
+              <IonLabel>Settings</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
