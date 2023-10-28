@@ -1,24 +1,11 @@
-import {
-  IonContent,
-  IonHeader,
-  IonNavLink,
-  IonPage,
-  IonRippleEffect,
-  IonTitle,
-  IonToolbar,
-  useIonModal,
-} from "@ionic/react";
+import { IonContent, IonNavLink, IonPage, IonRippleEffect } from "@ionic/react";
 import { useState } from "react";
 import { BsArrowDown, BsArrowUp, BsFillBellFill } from "react-icons/bs";
-import { IoWalletSharp } from "react-icons/io5";
 import { IoIosStats } from "react-icons/io";
-import HomeCharts from "./HomeCharts";
 import ExpensesListSummary from "./ExpensesListSummary";
 import { getTimeOfDay } from "../../../utils";
-import Expenses from "../../../pages/Expenses";
 import Reports from "../../../pages/Reports";
-import AddNewExpense from "../../AddNewExpense";
-import { OverlayEventDetail } from "@ionic/react/dist/types/components/react-component-lib/interfaces";
+import Notifications from "../../../pages/sub-pages/Notifications";
 
 const HomePageContainer: React.FC = () => {
   const months = [
@@ -36,22 +23,7 @@ const HomePageContainer: React.FC = () => {
     "December",
   ];
   const [selectedMonth, setSelectedMonth] = useState(0);
-  const [present, dismiss] = useIonModal(AddNewExpense, {
-    onDismiss: (data: string, role: string) => dismiss(data, role),
-  });
-  const [message, setMessage] = useState(
-    "This modal example uses the modalController to present and dismiss modals."
-  );
 
-  function openModal() {
-    present({
-      onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => {
-        if (ev.detail.role === "confirm") {
-          setMessage(`Hello, ${ev.detail.data}!`);
-        }
-      },
-    });
-  }
   return (
     <IonPage>
       <IonContent fullscreen className="">
@@ -64,13 +36,15 @@ const HomePageContainer: React.FC = () => {
               </p>
             </div>
             <div>
-              <button
-                className="text-2xl text-white ion-activatable relative overflow-hidden w-[50px] h-[50px] flex items-center justify-center rounded-full bg-opacity-20"
-                onClick={() => openModal()}
+              <IonNavLink
+                routerDirection="forward"
+                component={() => <Notifications />}
               >
-                <IonRippleEffect />
-                <BsFillBellFill />
-              </button>
+                <button className="text-2xl text-white ion-activatable relative overflow-hidden w-[50px] h-[50px] flex items-center justify-center rounded-full bg-opacity-20">
+                  <IonRippleEffect />
+                  <BsFillBellFill />
+                </button>
+              </IonNavLink>
             </div>
           </div>
         </div>

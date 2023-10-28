@@ -1,5 +1,4 @@
 import { Timeline } from "antd";
-import React from "react";
 import { BsCart4 } from "react-icons/bs";
 import { MdOutlineFastfood } from "react-icons/md";
 

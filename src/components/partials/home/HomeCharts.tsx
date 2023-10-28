@@ -2,13 +2,13 @@ import React from "react";
 import {
   BarChart,
   Bar,
-  Brush,
+  // Brush,
   ReferenceLine,
-  XAxis,
-  YAxis,
-  CartesianGrid,
+  // XAxis,
+  // YAxis,
+  // CartesianGrid,
   Tooltip,
-  Legend,
+  // Legend,
   ResponsiveContainer,
 } from "recharts";
 

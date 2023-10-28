@@ -19,9 +19,16 @@ import {
   MdOutlineShoppingCart,
   MdOutlineDirectionsBus,
 } from "react-icons/md";
-import { Select } from "antd";
+import { Progress } from "antd";
+import { useState } from "react";
+import { capitalize } from "lodash";
+import moment from "moment";
+import { BiChevronDown } from "react-icons/bi";
+import { DatePicker } from "antd-mobile";
 
 const ReportsPageContainer: React.FC = () => {
+  const [selectedTransactionOption, setsSlectedTransactionOption] =
+    useState("income");
   const categoriesData = [
     {
       category: "Food and Drink",
@@ -49,6 +56,22 @@ const ReportsPageContainer: React.FC = () => {
     },
   ];
 
+  const transactionOptions = [
+    {
+      name: "income",
+      icon: <BsArrowDown />,
+    },
+    {
+      name: "expenses",
+      icon: <BsArrowUp />,
+    },
+  ];
+
+  const [visible, setVisible] = useState(false);
+
+  const now = new Date();
+
+  const [currentDate, setCurrentDate] = useState(new Date());
   return (
     <>
       <IonContent fullscreen className="">
@@ -56,7 +79,7 @@ const ReportsPageContainer: React.FC = () => {
           <div className="flex justify-between items-center px-5">
             <div className="flex flex-col ">
               <IonNavLink routerDirection="back">
-                <button className="text-2xl ion-activatable relative overflow-hidden w-[50px] h-[50px] flex items-center justify-center rounded-full">
+                <button className="text-2xl ion-activatable relative overflow-hidden w-[50px] h-[50px] flex items-center justify-center rounded-lg bg-brand-primary/10 text-brand-primary">
                   <IonRippleEffect />
                   <HiChevronLeft />
                 </button>
@@ -81,13 +104,42 @@ const ReportsPageContainer: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-end items-center gap-3 px-5">
-            <IonItem className="w-full">
-              <IonSelect label="Report Type" labelPlacement="floating">
-                <IonSelectOption value="expense">Expense</IonSelectOption>
-                <IonSelectOption value="income">Income</IonSelectOption>
-              </IonSelect>
-            </IonItem>
+          <div className="flex items-center justify-center relative z-10 mt-5 ">
+            <div className="inline-flex rounded-full bg-brand-primary text-white p-1">
+              {transactionOptions.map((option) => (
+                <button
+                  key={option.name}
+                  className={`inline-flex items-center gap-1 rounded-full px-6  py-2 text-sm   focus:relative transition-all duration-300 ease-in-out ${
+                    selectedTransactionOption === option.name
+                      ? "text-brand-primary bg-white"
+                      : ""
+                  }`}
+                  onClick={() => setsSlectedTransactionOption(option.name)}
+                >
+                  {option.icon}
+                  <p>{capitalize(option.name)}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="flex justify-between items-center px-5 relative z-10">
+              <p className="font-bold text-lg">Reports Graph</p>
+              <button
+                className="flex items-center gap-1 px-4 py-2 text-sm rounded bg-brand-primary text-white"
+                onClick={() => {
+                  setVisible(true);
+                }}
+              >
+                <span>{moment(currentDate).format("MMM, YYYY")}</span>{" "}
+                <BiChevronDown
+                  size={25}
+                  className={`transition-all duration-300 ease-in-out ${
+                    visible ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </div>
           </div>
           <div className="h-[300px] -translate-y-20 mb-4">
             <ReportsCharts />
@@ -96,31 +148,10 @@ const ReportsPageContainer: React.FC = () => {
 
         <div className="bg-brand-primary -translate-y-12 rounded-t-lg pt-5 space-y-10 -mb-24 ">
           <div className="space-y-4 px-5 -translate-y-20 ">
-            <div className="flex justify-between items-center bg-white p-5 gap-3 rounded shadow-xl">
+            <div className="flex justify-between items-center bg-gray-50 p-5 gap-3 rounded shadow-xl">
               <div className="flex items-center gap-3">
-                <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-gray-100 text-green-600">
+                <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-red-600 text-white">
                   <BsArrowUp />
-                </div>
-                <p className="font-medium text-sm">Income</p>
-              </div>
-
-              <div className="flex flex-col items-end">
-                <p className="font-medium text-xl flex items-start gap-1 ">
-                  <span className="text-sm  mt-1">₦</span>
-                  <span className="">3,500</span>
-                </p>
-                <div>
-                  <p className="text-right text-xs">
-                    10% increase from the previous month
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center bg-white p-5 gap-3 rounded shadow-xl">
-              <div className="flex items-center gap-3">
-                <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-gray-100 text-red-600">
-                  <BsArrowDown />
                 </div>
                 <p className="font-medium text-sm">Expenses</p>
               </div>
@@ -137,6 +168,27 @@ const ReportsPageContainer: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            <div className="flex justify-between items-center bg-gray-50 p-5 gap-3 rounded shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="h-[40px] w-[40px] flex items-center justify-center rounded-full bg-green-600 text-white">
+                  <BsArrowDown />
+                </div>
+                <p className="font-medium text-sm">Income</p>
+              </div>
+
+              <div className="flex flex-col items-end">
+                <p className="font-medium text-xl flex items-start gap-1 ">
+                  <span className="text-sm  mt-1">₦</span>
+                  <span className="">3,500</span>
+                </p>
+                <div>
+                  <p className="text-right text-xs">
+                    10% increase from the previous month
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className=" px-5  text-white -translate-y-20">
@@ -148,7 +200,7 @@ const ReportsPageContainer: React.FC = () => {
               {categoriesData.map((category, index) => (
                 <div
                   key={index}
-                  className={`${category.colorClass} w-1/4 h-full py-1`}
+                  className={`${category.colorClass}  w-1/4 h-full py-1`}
                 ></div>
               ))}
             </div>
@@ -172,7 +224,40 @@ const ReportsPageContainer: React.FC = () => {
               ))}
             </div>
           </div>
+
+          <div className="px-5 -translate-y-24">
+            <div className="bg-white rounded-lg p-5">
+              <div className="flex items-start justify-between gap-3">
+                <p className="text-base font-bold">
+                  You have spent{" "}
+                  <span className="text-brand-primary">₦3,500</span> this month
+                </p>
+                <p className="text-gray-400 text-[10px] whitespace-nowrap">
+                  {moment(currentDate).format("MMM, YYYY")}
+                </p>
+              </div>
+              <div>
+                <Progress percent={50} />
+              </div>
+            </div>
+          </div>
         </div>
+
+        <DatePicker
+          precision="month"
+          title="Select Date"
+          cancelText="Cancel"
+          confirmText="Select Month"
+          visible={visible}
+          onClose={() => {
+            setVisible(false);
+          }}
+          max={now}
+          onConfirm={(val) => {
+            // Toast.show(val.toDateString());
+            setCurrentDate(val);
+          }}
+        />
       </IonContent>
     </>
   );

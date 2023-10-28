@@ -1,15 +1,4 @@
-import React from "react";
-import {
-  BarChart,
-  Bar,
-  Rectangle,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
 
 const months: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 

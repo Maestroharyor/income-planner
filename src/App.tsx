@@ -1,23 +1,12 @@
 import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonInput,
-  IonItem,
   IonLabel,
-  IonPage,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  IonTitle,
-  IonToolbar,
   setupIonicReact,
-  useIonModal,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { GoGoal } from "react-icons/go";
@@ -45,12 +34,12 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import "./index.scss";
-import Home from "./pages/Home";
-import Goals from "./pages/Goals";
-import Settings from "./pages/Settings";
+import Home from "./pages/main/Home";
+import Plans from "./pages/main/Plans";
+import Settings from "./pages/main/Settings";
 import { BsPlus } from "react-icons/bs";
-import AddNewIncomeOrExpense from "./pages/AddNewIncomeOrExpense";
-import Transactions from "./pages/Transactions";
+import AddNewIncomeOrExpense from "./pages/main/AddNewIncomeOrExpense";
+import Transactions from "./pages/main/Transactions";
 
 setupIonicReact();
 
@@ -69,8 +58,8 @@ const App: React.FC = () => {
             <Route exact path="/add-new">
               <AddNewIncomeOrExpense />
             </Route>
-            <Route path="/goals">
-              <Goals />
+            <Route path="/plans">
+              <Plans />
             </Route>
             <Route path="/settings">
               <Settings />
@@ -85,35 +74,35 @@ const App: React.FC = () => {
               <div className="text-[22px]">
                 <BiHomeAlt2 />
               </div>
-              <IonLabel>Home</IonLabel>
+              <IonLabel className="text-xs">Home</IonLabel>
             </IonTabButton>
 
             <IonTabButton tab="transactions" href="/transactions">
               <div className="text-[22px]">
                 <RiMoneyDollarCircleLine />
               </div>
-              <IonLabel>Transactions</IonLabel>
+              <IonLabel className="text-xs">Transactions</IonLabel>
             </IonTabButton>
 
             <IonTabButton tab="add" href="/add-new" className="mb-1">
-              <div className="text-[22px] flex items-center justify-center w-[50px] h-[50px] bg-brand-primary text-white rounded-full">
+              <div className="text-[22px] flex items-center justify-center w-[45px] h-[45px] bg-brand-primary text-white rounded-full">
                 <BsPlus />
               </div>
               {/* <IonLabel>Goals</IonLabel> */}
             </IonTabButton>
 
-            <IonTabButton tab="goals" href="/goals">
+            <IonTabButton tab="plans" href="/plans">
               <div className="text-[22px]">
                 <GoGoal />
               </div>
-              <IonLabel>Plans</IonLabel>
+              <IonLabel className="text-xs">Plans</IonLabel>
             </IonTabButton>
 
             <IonTabButton tab="settings" href="/settings">
               <div className="text-[22px]">
                 <FiSettings />
               </div>
-              <IonLabel>Settings</IonLabel>
+              <IonLabel className="text-xs">Settings</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

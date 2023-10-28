@@ -1,14 +1,8 @@
-import {
-  IonContent,
-  IonPage,
-  IonRippleEffect,
-  useIonModal,
-} from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import { useState } from "react";
-import { BsArrowDown, BsArrowUp, BsFillBellFill } from "react-icons/bs";
-import { getTimeOfDay } from "../../../utils";
+import { BsArrowDown, BsArrowUp } from "react-icons/bs";
 import { capitalize } from "lodash";
-import { DatePicker, Toast } from "antd-mobile";
+import { DatePicker } from "antd-mobile";
 import { BiChevronDown } from "react-icons/bi";
 import moment from "moment";
 import TransactionCard from "../../cards/TransactionCard";
@@ -48,7 +42,7 @@ const TransactionsPageContainer: React.FC = () => {
               {transactionOptions.map((option) => (
                 <button
                   key={option.name}
-                  className={`inline-flex items-center gap-1 rounded-full px-8  py-2 text-sm   focus:relative transition-all duration-300 ease-in-out ${
+                  className={`inline-flex items-center gap-1 rounded-full px-6  py-2 text-sm   focus:relative transition-all duration-300 ease-in-out ${
                     selectedTransactionOption === option.name
                       ? "text-brand-primary bg-white"
                       : ""
@@ -78,7 +72,7 @@ const TransactionsPageContainer: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="bg-gray-100 py-10 grid grid-cols-1 gap-5 px-5">
+        <div className="bg-gray-100 py-10 flex flex-col gap-5 px-5 min-h-[calc(100vh-100px)]">
           <TransactionCard />
           <TransactionCard />
           <TransactionCard />

@@ -1,5 +1,4 @@
 import { Progress } from "antd";
-import React from "react";
 import { FcAutomotive } from "react-icons/fc";
 import { getRandomDateBetweenYears } from "../../utils";
 import moment from "moment";
