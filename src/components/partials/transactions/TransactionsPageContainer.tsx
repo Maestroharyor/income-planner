@@ -12,11 +12,16 @@ import { DatePicker, Toast } from "antd-mobile";
 import { BiChevronDown } from "react-icons/bi";
 import moment from "moment";
 import TransactionCard from "../../cards/TransactionCard";
+import { RiArrowUpDownLine } from "react-icons/ri";
 
 const TransactionsPageContainer: React.FC = () => {
   const [selectedTransactionOption, setsSlectedTransactionOption] =
     useState("income");
   const transactionOptions = [
+    {
+      name: "all",
+      icon: <RiArrowUpDownLine />,
+    },
     {
       name: "income",
       icon: <BsArrowDown />,
@@ -43,7 +48,7 @@ const TransactionsPageContainer: React.FC = () => {
               {transactionOptions.map((option) => (
                 <button
                   key={option.name}
-                  className={`inline-flex items-center gap-1 rounded-full px-8  py-2 text-sm   hover:text-yellow-500 focus:relative transition-all duration-300 ease-in-out ${
+                  className={`inline-flex items-center gap-1 rounded-full px-8  py-2 text-sm   focus:relative transition-all duration-300 ease-in-out ${
                     selectedTransactionOption === option.name
                       ? "text-brand-primary bg-white"
                       : ""
