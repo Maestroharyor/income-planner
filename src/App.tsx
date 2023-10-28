@@ -46,13 +46,11 @@ import "./theme/variables.css";
 
 import "./index.scss";
 import Home from "./pages/Home";
-import Expenses from "./pages/Expenses";
 import Goals from "./pages/Goals";
 import Settings from "./pages/Settings";
 import { BsPlus } from "react-icons/bs";
-import { useRef, useState } from "react";
-import { OverlayEventDetail } from "@ionic/react/dist/types/components/react-component-lib/interfaces";
 import AddNewIncomeOrExpense from "./pages/AddNewIncomeOrExpense";
+import Transactions from "./pages/Transactions";
 
 setupIonicReact();
 
@@ -65,8 +63,8 @@ const App: React.FC = () => {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path="/expenses">
-              <Expenses />
+            <Route exact path="/transactions">
+              <Transactions />
             </Route>
             <Route exact path="/add-new">
               <AddNewIncomeOrExpense />
@@ -90,14 +88,14 @@ const App: React.FC = () => {
               <IonLabel>Home</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="expenses" href="/expenses">
+            <IonTabButton tab="transactions" href="/transactions">
               <div className="text-[22px]">
                 <RiMoneyDollarCircleLine />
               </div>
-              <IonLabel>Expenses</IonLabel>
+              <IonLabel>Transactions</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="add" href="/add-new">
+            <IonTabButton tab="add" href="/add-new" className="mb-1">
               <div className="text-[22px] flex items-center justify-center w-[50px] h-[50px] bg-brand-primary text-white rounded-full">
                 <BsPlus />
               </div>

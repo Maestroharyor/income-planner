@@ -11,3 +11,18 @@ export function getTimeOfDay(): string {
     return "Night";
   }
 }
+
+export function getRandomDateBetweenYears(
+  startYear: number,
+  endYear: number
+): Date {
+  const startDate = new Date(startYear, 0, 1); // January 1st of the start year
+  const endDate = new Date(endYear, 11, 31); // December 31st of the end year
+
+  const randomTime =
+    startDate.getTime() +
+    Math.random() * (endDate.getTime() - startDate.getTime());
+  const randomDate = new Date(randomTime);
+
+  return randomDate;
+}
