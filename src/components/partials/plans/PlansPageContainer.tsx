@@ -9,7 +9,7 @@ const PlansPageContainer: React.FC = () => {
             <p className="text-lg font-bold">Income Disbursement Plan</p>
           </div>
         </div>
-        <div className="bg-gray-100 py-10 flex flex-col gap-5 px-5 min-h-[calc(100vh-150px)] ">
+        <div className="bg-gray-100 pt-5 pb-10 flex flex-col gap-5 px-5 min-h-[calc(100vh-150px)] ">
           <PlanCard />
         </div>
       </IonContent>
