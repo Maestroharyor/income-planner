@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import {
   IonApp,
   IonLabel,
@@ -49,24 +49,26 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/transactions">
-              <Transactions />
-            </Route>
-            <Route exact path="/add-new">
-              <AddNewIncomeOrExpense />
-            </Route>
-            <Route path="/plans">
-              <Plans />
-            </Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
+            <Switch>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/transactions">
+                <Transactions />
+              </Route>
+              <Route exact path="/add-new">
+                <AddNewIncomeOrExpense />
+              </Route>
+              <Route path="/plans">
+                <Plans />
+              </Route>
+              <Route path="/settings">
+                <Settings />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+            </Switch>
           </IonRouterOutlet>
 
           <IonTabBar slot="bottom">
