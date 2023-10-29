@@ -7,9 +7,9 @@ import PageLoader from "../../components/loaders/PageLoader";
 
 const Home = () => {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <IonNav root={() => <HomePageContainer />}></IonNav>
-    </Suspense>
+    // <Suspense fallback={<PageLoader />}>
+    <IonNav root={() => <HomePageContainer />}></IonNav>
+    // </Suspense>
   );
 };
 
