@@ -2,6 +2,7 @@ import {
   IonContent,
   IonItem,
   IonNavLink,
+  IonPage,
   IonRippleEffect,
   IonSelect,
   IonSelectOption,

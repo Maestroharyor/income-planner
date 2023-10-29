@@ -4,7 +4,7 @@ import NotificationCard from "../../cards/NotificationCard";
 
 const NotificationsPageContainer: React.FC = () => {
   return (
-    <IonPage>
+    <>
       <IonContent fullscreen className="">
         <div className="bg-brand-primary pt-10 pb-8 px-5  flex flex-col items-center gap-y-5 rounded-b-lg text-white">
           <div className="mb-2 flex items-center justify-between w-full">
@@ -26,7 +26,7 @@ const NotificationsPageContainer: React.FC = () => {
           <NotificationCard /> */}
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

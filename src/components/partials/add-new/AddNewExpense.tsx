@@ -10,11 +10,11 @@ const AddNewExpense: React.FC = () => {
   //   e.preventDefault();
   // };
 
-  // const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const now = new Date();
 
-  // const [currentDate, setCurrentDate] = useState(now);
+  const [currentDate, setCurrentDate] = useState(now);
   return (
     <IonPage>
       <IonContent fullscreen className="">

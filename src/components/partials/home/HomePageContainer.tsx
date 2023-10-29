@@ -1,10 +1,16 @@
-import { IonContent, IonNavLink, IonPage, IonRippleEffect } from "@ionic/react";
+import {
+  IonButton,
+  IonContent,
+  IonNavLink,
+  IonPage,
+  IonRippleEffect,
+} from "@ionic/react";
 import { useState } from "react";
 import { BsArrowDown, BsArrowUp, BsFillBellFill } from "react-icons/bs";
 import { IoIosStats } from "react-icons/io";
 import ExpensesListSummary from "./ExpensesListSummary";
 import { getTimeOfDay } from "../../../utils";
-import Reports from "../../../pages/Reports";
+import Reports from "../../../pages/sub-pages/Reports";
 import Notifications from "../../../pages/sub-pages/Notifications";
 
 const HomePageContainer: React.FC = () => {
@@ -25,7 +31,7 @@ const HomePageContainer: React.FC = () => {
   const [selectedMonth, setSelectedMonth] = useState(0);
 
   return (
-    <IonPage>
+    <>
       <IonContent fullscreen className="">
         <div className="bg-brand-primary pt-10 px-5 pb-20 space-y-7 rounded-b-lg">
           <div className="flex justify-between items-center">
@@ -121,7 +127,7 @@ const HomePageContainer: React.FC = () => {
           <ExpensesListSummary />
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

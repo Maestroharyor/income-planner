@@ -10,7 +10,7 @@ const SettingsPageContainer: React.FC = () => {
   const router = useIonRouter();
 
   return (
-    <IonPage>
+    <>
       <IonContent fullscreen className="">
         <div className="bg-brand-primary pt-10 pb-20 px-5  flex flex-col items-center gap-y-5 rounded-b-lg text-white">
           <div className="mb-2 flex items-center justify-between w-full">
@@ -90,7 +90,7 @@ const SettingsPageContainer: React.FC = () => {
           </div>
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

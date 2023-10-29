@@ -5,7 +5,7 @@ import AddNewIncome from "./AddNewIncome";
 
 const AddNewContainer: React.FC = () => {
   return (
-    <IonPage>
+    <>
       <IonContent fullscreen className="">
         <div className="pt-10 pb-8 px-5  flex flex-col items-center gap-y-5 rounded-b-lg text-brand-primary">
           <div className="flex items-center justify-center w-full">
@@ -47,7 +47,7 @@ const AddNewContainer: React.FC = () => {
           </IonNavLink>
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

@@ -5,9 +5,9 @@ import PageLoader from "../../components/loaders/PageLoader";
 
 const Home = () => {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <IonNav root={() => <AddNewContainer />}></IonNav>
-    </Suspense>
+    // <Suspense fallback={<PageLoader />}>
+    <IonNav root={() => <AddNewContainer />}></IonNav>
+    // </Suspense>
   );
 };
 

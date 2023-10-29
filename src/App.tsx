@@ -90,7 +90,6 @@ const App: React.FC = () => {
               <div className="text-[22px] flex items-center justify-center w-[45px] h-[45px] bg-brand-primary text-white rounded-full">
                 <BsPlus />
               </div>
-              {/* <IonLabel>Goals</IonLabel> */}
             </IonTabButton>
 
             <IonTabButton tab="plans" href="/plans">
