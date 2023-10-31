@@ -49,26 +49,26 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Switch>
-              <Route exact path="/home">
-                <Home />
-              </Route>
-              <Route exact path="/transactions">
-                <Transactions />
-              </Route>
-              <Route exact path="/add-new">
-                <AddNewIncomeOrExpense />
-              </Route>
-              <Route path="/plans">
-                <Plans />
-              </Route>
-              <Route path="/settings">
-                <Settings />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/home" />
-              </Route>
-            </Switch>
+            {/* <Switch> */}
+            <Route exact path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/transactions">
+              <Transactions />
+            </Route>
+            <Route exact path="/add-new">
+              <AddNewIncomeOrExpense />
+            </Route>
+            <Route path="/plans">
+              <Plans />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+            {/* </Switch> */}
           </IonRouterOutlet>
 
           <IonTabBar slot="bottom">
@@ -86,7 +86,7 @@ const App: React.FC = () => {
               <IonLabel className="text-xs">Transactions</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="add" href="/add-new" className="mb-1">
+            <IonTabButton tab="add-new" href="/add-new" className="mb-1">
               <div className="text-[22px] flex items-center justify-center w-[45px] h-[45px] bg-brand-primary text-white rounded-full">
                 <BsPlus />
               </div>

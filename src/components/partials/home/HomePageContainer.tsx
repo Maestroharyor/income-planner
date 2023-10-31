@@ -2,13 +2,13 @@ import {
   IonButton,
   IonContent,
   IonNavLink,
-  IonPage,
   IonRippleEffect,
 } from "@ionic/react";
-import { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { BsArrowDown, BsArrowUp, BsFillBellFill } from "react-icons/bs";
 import { IoIosStats } from "react-icons/io";
-import ExpensesListSummary from "./ExpensesListSummary";
+// import ExpensesListSummary from "./ExpensesListSummary";
+const ExpensesListSummary = React.lazy(() => import("./ExpensesListSummary"));
 import { getTimeOfDay } from "../../../utils";
 import Reports from "../../../pages/sub-pages/Reports";
 import Notifications from "../../../pages/sub-pages/Notifications";
@@ -57,13 +57,9 @@ const HomePageContainer: React.FC = () => {
         <div className="mx-5 h-[200px] rounded-xl bg-blue-900 border border-white shadow-xl -translate-y-12 flex flex-col justify-between p-5">
           <div className="flex justify-between items-center">
             <div className="flex gap-3 items-center">
-              {/* <div className="w-[45px] h-[45px] text-xl rounded-full text-blue-600 flex items-center justify-center bg-white">
-                <IoWalletSharp />
-              </div> */}
               <div>
                 <p className="text-[11px] text-blue-100">TOTAL SAVINGS</p>
                 <p className="font-bold text-3xl flex items-start gap-1 ">
-                  {/* <span className="text-base text-blue-100 mt-1">₦</span> */}
                   <span className="text-white">₦3,203,500.00</span>
                 </p>
               </div>
@@ -124,7 +120,9 @@ const HomePageContainer: React.FC = () => {
           </div>
         </div>
         <div className="bg-gray-50 pt-10 -translate-y-4">
-          <ExpensesListSummary />
+          <Suspense fallback={<div></div>}>
+            <ExpensesListSummary />
+          </Suspense>
         </div>
       </IonContent>
     </>

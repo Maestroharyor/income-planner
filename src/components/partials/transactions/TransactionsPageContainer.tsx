@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent } from "@ionic/react";
 import { useState } from "react";
 import { BsArrowDown, BsArrowUp } from "react-icons/bs";
 import { capitalize } from "lodash";
@@ -31,7 +31,7 @@ const TransactionsPageContainer: React.FC = () => {
 
   const [currentDate, setCurrentDate] = useState(new Date());
   return (
-    <IonPage>
+    <>
       <IonContent fullscreen className="">
         <div className="bg-brand-primary pt-10 pb-8 px-5  flex flex-col items-center gap-y-5 rounded-b-lg text-white">
           <div className="mb-2">
@@ -96,7 +96,7 @@ const TransactionsPageContainer: React.FC = () => {
           }}
         />
       </IonContent>
-    </IonPage>
+    </>
   );
 };
 

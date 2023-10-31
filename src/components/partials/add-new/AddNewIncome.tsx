@@ -1,6 +1,7 @@
 import { IonContent, IonNavLink, IonPage, IonRippleEffect } from "@ionic/react";
 import React from "react";
 import { HiChevronLeft } from "react-icons/hi";
+import AddNewIncomeForm from "../../forms/AddNewIncomeForm";
 
 const AddNewIncome = () => {
   return (
@@ -18,7 +19,7 @@ const AddNewIncome = () => {
             <div></div>
           </div>
         </div>
-        <div className="bg-gray-100 py-10 flex flex-col gap-5 px-5 min-h-[calc(100vh-180px)] "></div>
+        <AddNewIncomeForm />
       </IonContent>
     </IonPage>
   );

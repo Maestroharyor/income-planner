@@ -2,6 +2,7 @@ import { IonContent, IonNavLink, IonPage, IonRippleEffect } from "@ionic/react";
 import { HiChevronRight } from "react-icons/hi";
 import AddNewExpense from "./AddNewExpense";
 import AddNewIncome from "./AddNewIncome";
+import { useState } from "react";
 
 const AddNewContainer: React.FC = () => {
   return (
